@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainer</title>
+    <link rel="stylesheet" type="text/css" href="css/type.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="header-div">
+            <div class="header-left-div">
+                <a href="/">HOME</a>
+            </div>
+            <div class="header-right-div">
+                <a href="/pokemon">POKEMON</a>
+                <a href="/trainer">TRAINER</a>
+                <a href="/type">TYPES</a>
+            </div>
+        </div>
+    </header>
+    <div class="content-div">
+        <div class="heading-div">
+           <h1>Types</h1>
+        </div>
+        <!-- <div class="createButton"><button type="button" class="btn btn-primary">Add new Type</button></div> -->
+        <div class="type-grids">
+            <div class="type-grid">
+                <% types.forEach((type) => { %>
+                <a class="div-grids">
+                    <div class="type-card">
+                        <div class="type-image">
+                            <img src="<%= type.imageurl %>" alt="<%= type.name %>">
+                        </div>
+                        <div class="type-info">
+                            <h3><%= type.name %></h3>
+                            <p>ID: <%= type.id %></p>
+                        </div>
+                    </div>
+                </a>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

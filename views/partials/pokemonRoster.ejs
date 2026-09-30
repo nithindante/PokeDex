@@ -1,0 +1,94 @@
+<%
+  const typeColors = {
+    Grass: "#6ebd5c,#4a9a3d",
+    Fire: "#f2794a,#c9552a",
+    Water: "#4f9fe0,#2f6fb0",
+    Electric: "#e6c229,#b89614",
+    Normal: "#a3a294,#807f72",
+    Psychic: "#e6739f,#c04a76",
+    Fighting: "#c0533a,#93381f",
+    Ghost: "#6b5b95,#4a3d70",
+    Poison: "#a35bc9,#7c3a9e",
+    Fairy: "#f4a6c6,#d97ba3",
+  };
+  const typeGradient = (type) => typeColors[(type || [])[0]?.name] || "#bb86fc,#9b63d4";
+  const typeLabel = (type) => (type || []).map((t) => t.name).join(" / ");
+
+  const roster = trainer.pokemon || [];
+  const available = roster.filter((p) => !p.status);
+  const unavailable = roster.filter((p) => p.status);
+  const [active, ...benched] = available;
+%>
+
+<div class="roster">
+  <div class="roster-label">
+    <h5>Party</h5>
+    <span><%= active ? 1 : 0 %> active &middot; <%= benched.length %> benched &middot; <%= unavailable.length %> unavailable</span>
+  </div>
+
+  <% if (active) { %>
+    <form>
+    <div class="spotlight" id="spotlight">
+      <span class="badge-active">Active</span>
+      <button type="submit" class="delete-pokemon-btn" aria-label="Delete <%= active.name %>">&times;</button>
+      <img id="spotlight-img" src="<%= active.imageUrl || '/images/pokemon-placeholder.svg' %>" onerror="this.onerror=null;this.src='/images/pokemon-placeholder.svg'" alt="<%= active.name %>">
+      <div class="info">
+        <div class="name-row">
+          <h6 id="spotlight-name"><%= active.name %></h6>
+          <span class="lvl" id="spotlight-lvl">Lv. <%= active.level ?? '—' %></span>
+        </div>
+        <div class="hp-row" id="spotlight-hp-row" <%= active.hp == null ? 'hidden' : '' %>>
+          <span class="hp-label">HP</span>
+          <div class="hp-track"><div class="hp-fill" id="spotlight-hp-fill" style="--hp:<%= active.hp ?? 0 %>%"></div></div>
+        </div>
+        <span class="type-pill" id="spotlight-type" style="--grad:<%= typeGradient(active.type) %>"><%= typeLabel(active.type) %></span>
+      </div>
+    </div>
+    </form>
+  <% } %>
+
+  <div class="roster-grid">
+    <% benched.forEach((p) => { %>
+      <form class="delete-form" method="post" action="/trainer/<%= trainer.id %>/<%= p.id %>" data-confirm="Remove <%= p.name %> from <%= trainer.name %>?">
+      <div class="mon-card"
+        data-name="<%= p.name %>" data-img="<%= p.imageUrl || '/images/pokemon-placeholder.svg' %>"
+        data-lvl="<%= p.level ?? '—' %>" data-hp="<%= p.hp ?? '' %>"
+        data-type="<%= typeLabel(p.type) %>" data-grad="<%= typeGradient(p.type) %>">
+        <button class="delete-pokemon-btn" role="button" type="submit" aria-label="Delete<%= p.name %>">&times;</button>
+        <div class="top">
+          <img src="<%= p.imageUrl || '/images/pokemon-placeholder.svg' %>" onerror="this.onerror=null;this.src='/images/pokemon-placeholder.svg'" alt="<%= p.name %>">
+          <div>
+            <p class="name"><%= p.name %></p>
+            <span class="lvl">Lv. <%= p.level ?? '—' %></span>
+          </div>
+        </div>
+        <span class="type-pill" style="--grad:<%= typeGradient(p.type) %>"><%= typeLabel(p.type) %></span>
+        <span class="promote">&#8593; Set as lead</span>
+      </div>
+      </form>
+    <% }); %>
+
+    <% unavailable.forEach((p) => { %>
+      <form>
+      <div class="mon-card unavailable" tabindex="0" role="group"
+        aria-disabled="true" aria-label="<%= p.name %>, <%= p.status %>, unavailable">
+        <button type="button" class="delete-pokemon-btn" aria-label="Delete <%= p.name %>">&times;</button>
+        <div class="top">
+          <img src="<%= p.imageUrl || '/images/pokemon-placeholder.svg' %>" onerror="this.onerror=null;this.src='/images/pokemon-placeholder.svg'" alt="<%= p.name %>">
+          <div>
+            <p class="name"><%= p.name %></p>
+            <span class="lvl">Lv. <%= p.level ?? '—' %></span>
+          </div>
+        </div>
+        <span class="status-tag"><%= p.status %></span>
+      </div>
+      </form>
+    <% }); %>
+
+    <% if (!available.length && !unavailable.length) { %>
+      <p class="no-pokemon">No Pokémon listed</p>
+    <% } %>
+
+    <button type="button" class="mon-card empty-slot" id="addPokemonToggle">+ Add Pokémon</button>
+  </div>
+</div>

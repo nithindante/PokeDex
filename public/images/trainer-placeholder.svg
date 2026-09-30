@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 100 100" role="img" aria-label="Trainer image unavailable">
+  <circle cx="50" cy="50" r="46" fill="#eee" stroke="#222" stroke-width="6"/>
+  <circle cx="50" cy="38" r="15" fill="#fff" stroke="#222" stroke-width="6"/>
+  <path d="M20 84a30 26 0 0 1 60 0" fill="#fff" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+</svg>

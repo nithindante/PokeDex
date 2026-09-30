@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PokeDex</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="main-div">
+        <header>
+            <div class="header-div">
+                <div class="header-left-div">
+                    <a href="/">HOME</a>
+                </div>
+                <div class="header-right-div">
+                    <a href="/pokemon">POKEMON</a>
+                    <a href="/trainer">TRAINER</a>
+                    <a href="/type">TYPES</a>
+                </div>
+            </div>
+        </header>
+        <div class="content-div">
+            <div class="heading-div">
+                <span class="main-heading">PokeDex</span>
+                <span class="secondary-heading">Search, discover, and learn about every Pokémon in one place.</span>
+            </div>
+            <div class="quick-stats-div">
+                <span>Quick Stats</span>
+                <div class="container text-center">
+                    <div class="row" style="gap: 10px;">
+                        <div class="col cards-col">
+                            <div class="quick-stat-cards">
+                            <div>
+                                <%= count[0] %>
+                            </div>
+                            <div>
+                                <span class="card-heading">Total Pokemon</span>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col cards-col">
+                                                        <div class="quick-stat-cards">
+                            <div>
+                                <%= count[1] %>
+                            </div>
+                            <div>
+                                <span class="card-heading">Total Trainers</span>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col cards-col">
+                                                        <div class="quick-stat-cards">
+                            <div>
+                                <%= count[2] %>
+                            </div>
+                            <div>
+                                <span class="card-heading">Total Types</span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="quick-actions-div">
+                <span>Quick Actions</span>
+                <div class="quick-actions-buttons-div">
+                    <a href="/pokemon/new" class="btn btn-primary">Create new Pokemon</a>
+                    <a href="/trainer/new" class="btn btn-primary">Create new Trainer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

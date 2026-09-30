@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Create New Pokemon</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+</head>
+<body> 
+    <div class="main-div">
+        <header>
+            <div class="header-div">
+                <div class="header-left-div">
+                    <a href="/">HOME</a>
+                </div>
+                <div class="header-right-div">
+                    <a href="/pokemon">POKEMON</a>
+                    <a href="/trainer">TRAINER</a>
+                    <a href="/type">TYPES</a>
+                </div>
+            </div>
+        </header>
+    <div class="content-div" style="height: 89.5%;">
+        <div class="heading-div">
+           <h1>Create New Trainer</h1>
+        </div>
+        <div class="form-div">
+        <form class="create-form" method="post" action="/trainer/new">
+            <div class="mb-3">
+                <label for="trainerName" class="form-label">Trainer Name</label>
+                <input type="text" class="form-control" id="trainerName" placeholder="Enter Trainer Name" name="trainerName">
+            </div>
+            <div class="mb-3">
+                <label for="trainerImage" class="form-label">Trainer Image URL</label>
+                <input type="text" class="form-control" id="trainerImage" placeholder="Enter Trainer Image URL" name="trainerImageUrl">
+            </div>   
+            <div class="mb-3">
+                <label for="pokemon" class="form-label">Pokemon</label>
+                <select class="form-select" id="pokemon" name="pokemons[]" multiple size="8">
+                    <% pokemon.forEach((p) => { %>
+                        <option value="<%= p.id %>"><%= p.pokemon_name %></option>
+                    <% }) %>
+                </select>
+                <div class="form-text">Hold Ctrl (or Cmd) to select multiple.</div>
+            </div>
+            <button type="submit" class="submit btn btn-primary">Create Trainer</button>
+        </form>
+        </div>
+    </div>
+    </div>
+</body>
+</html>   

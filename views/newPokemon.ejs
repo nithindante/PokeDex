@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Create New Pokemon</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="main-div">
+        <header>
+            <div class="header-div">
+                <div class="header-left-div">
+                    <a href="/">HOME</a>
+                </div>
+                <div class="header-right-div">
+                    <a href="/pokemon">POKEMON</a>
+                    <a href="/trainer">TRAINER</a>
+                    <a href="/type">TYPES</a>
+                </div>
+            </div>
+        </header>
+        <div class="content-div" style="height: 89.5%;">
+            <div class="heading-div">
+                <h1>Create New Pokemon</h1>
+            </div>
+            <div class="form-div">
+                <form class="create-form" method="post" action="/pokemon/new">
+                    <div class="mb-3">
+                        <label for="pokemonName" class="form-label">Pokemon Name</label>
+                        <input type="text" class="form-control" id="pokemonName" placeholder="Enter Pokemon Name" name="pokemonName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pokemonType" class="form-label">Pokemon Type</label>
+                        <select class="form-select" id="pokemonType" name="pokemonType">
+                            <% types.forEach((p)=> { %>
+                                <option value="<%= p.type_name %>">
+                                    <%= p.type_name %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pokemonImage" class="form-label">Pokemon Image URL</label>
+                        <input type="text" class="form-control" id="pokemonImage" placeholder="Enter Pokemon Image URL"
+                            name="pokemonUrl">
+                    </div>
+                    <button type="submit" class="submit btn btn-primary">Create Pokemon</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

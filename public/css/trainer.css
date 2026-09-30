@@ -1,0 +1,641 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter";
+  color: #fff;
+}
+
+.header-div {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  padding: 1.5rem;
+  background-color: #1b263b;
+  .header-left-div {
+    display: flex;
+    a {
+      color: #bb86fc;
+      text-decoration: none;
+    }
+  }
+}
+.header-right-div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  a {
+    color: #bb86fc;
+    text-decoration: none;
+  }
+}
+
+.main-heading,
+.secondary-heading {
+  color: #200245;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.content-div {
+  background: linear-gradient(90deg, #a4baf5, #c8e74d, #f5a2a1);
+  background-size: 300% 300%;
+  animation: gradient 6s alternate infinite;
+  position: absolute;
+  min-height: 100vh;
+  width: 100%;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+.heading-div{
+    color: #200245;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.back-link{
+    color: #7c3a9e;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.back-link:hover{
+    text-decoration: underline;
+}
+
+
+
+  .createButton{
+    padding-left:2rem;
+    .btn-primary {
+      font-family: "Inter";
+      font-weight: 500;
+      font-size: 1rem;
+      background-color: #1b263b;
+      border-color: #1b263b;
+    }
+  }
+
+  /* Styles for trainer detail view */
+  .trainer-detail{
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem;
+  }
+
+  .trainer-card.single{
+    /* max-width: 900px;
+    width: 95%; */
+    display: flex;
+    gap: 2rem;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 2rem;
+    align-items: flex-start;
+    box-shadow: 0 8px 30px rgba(32, 2, 69, 0.15);
+    color: #200245;
+  }
+
+  .trainer-card.single .trainer-image img{
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    background: #f0f0f0;
+    padding: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .trainer-card.single .trainer-info{
+    flex: 1;
+    color: #200245;
+  }
+
+  .trainer-card.single .trainer-info h3{
+    font-size: 2rem;
+    margin: 0 0 0.25rem 0;
+    color: #200245;
+    font-weight: 700;
+  }
+
+  .trainer-card.single .trainer-info h5{
+    font-size: 1.25rem;
+    margin: 1.5rem 0 1rem 0;
+    color: #200245;
+    font-weight: 600;
+    padding-bottom: 0.75rem;
+  }
+
+  .trainer-card.single .trainer-info ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .trainer-card.single .trainer-info li{
+    background: linear-gradient(135deg, #bb86fc, #9b63d4);
+    color: #fff;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+    box-shadow: 0 2px 8px rgba(187, 134, 252, 0.2);
+  }
+
+  .trainer-card.single .trainer-info li:first-child:last-child {
+    width: 100%;
+    text-align: center;
+    background: #f5f5f5;
+    color: #999;
+  }
+
+  .trainer-card.single .trainer-info hr{
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 1.5rem 0;
+  }
+
+  .trainer-card.single .trainer-info form{
+    background: #f9f9f9;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .trainer-card.single .trainer-info form label{
+    color: #200245;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+  }
+
+  .trainer-card.single .trainer-info form .mb-2{
+    margin-bottom: 1rem;
+  }
+
+  .trainer-card.single .trainer-info form input{
+    color: #200245;
+    border-color: #ddd;
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .trainer-card.single .trainer-info form input:focus{
+    border-color: #bb86fc;
+    box-shadow: 0 0 0 3px rgba(187, 134, 252, 0.1);
+  }
+
+  .trainer-card.single .trainer-info form input::placeholder{
+    color: #bbb;
+  }
+
+  .trainer-card.single .btn{
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px){
+    .trainer-card.single{flex-direction: column; text-align: center;}
+    .trainer-card.single .trainer-image img{width:160px;height:160px}
+    .trainer-card.single .trainer-info{padding:0 0.5rem}
+    .trainer-grid{grid-template-columns: repeat(1, 1fr);}
+  }
+
+  /* Party / roster section */
+  .trainer-header{
+    margin-bottom: 1.5rem;
+
+    h3{
+      margin: 0 0 0.25rem 0;
+    }
+  }
+
+  .trainer-meta{
+    margin: 0;
+    color: #6b6b7d;
+    font-size: 0.95rem;
+  }
+
+  .roster{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .roster-label{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+
+    h5{
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #200245;
+    }
+
+    span{
+      color: #8b849c;
+      font-size: 0.85rem;
+    }
+  }
+
+  .spotlight{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(143, 174, 43, 0.35);
+    background: linear-gradient(135deg, rgba(200, 231, 77, 0.35), rgba(255, 255, 255, 0.9));
+
+    img{
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 10px;
+      padding: 0.5rem;
+      flex-shrink: 0;
+      transition: opacity 150ms ease;
+    }
+
+    .info{
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: opacity 150ms ease;
+    }
+  }
+
+  .spotlight.is-swapping img,
+  .spotlight.is-swapping .info{
+    opacity: 0;
+  }
+
+  .badge-active{
+    position: absolute;
+    top: -0.6rem;
+    left: 1.25rem;
+    background: #8fae2b;
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(143, 174, 43, 0.4);
+  }
+
+  .name-row{
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+
+    h6{
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #200245;
+    }
+  }
+
+  .lvl{
+    font-size: 0.78rem;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    color: #6b6b7d;
+  }
+
+  .hp-row{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hp-label{
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #8b849c;
+  }
+
+  .hp-track{
+    flex: 1;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(32, 2, 69, 0.1);
+    overflow: hidden;
+  }
+
+  .hp-fill{
+    height: 100%;
+    border-radius: 999px;
+    background: #8fae2b;
+    width: var(--hp, 0%);
+    transition: width 200ms ease;
+  }
+
+  .type-pill{
+    display: inline-block;
+    align-self: flex-start;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--grad, #bb86fc,#9b63d4));
+  }
+
+  .roster-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 0.85rem;
+
+    > form{
+      display: contents;
+    }
+  }
+
+  .mon-card{
+    position: relative;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(32, 2, 69, 0.15);
+    padding: 0.9rem;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.6rem;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+
+    &:hover,
+    &:focus-visible{
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(32, 2, 69, 0.3);
+      outline: none;
+    }
+
+    .top{
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top:1rem;
+
+      > div{
+        flex: 1;
+        min-width: 0;
+      }
+
+      img{
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        background: #f0f0f0;
+        border-radius: 8px;
+        padding: 0.35rem;
+        flex-shrink: 0;
+      }
+    }
+
+    .name{
+      margin: 0;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #200245;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .promote{
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #7c3a9e;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    &:hover .promote,
+    &:focus-visible .promote{
+      opacity: 1;
+    }
+  }
+
+  .mon-card.unavailable{
+    filter: grayscale(1);
+    opacity: 0.6;
+    border: 1px dashed #8b849c;
+    box-shadow: none;
+    cursor: default;
+
+    &:hover{
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  .delete-pokemon-btn{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(32, 2, 69, 0.35);
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .status-tag{
+    align-self: flex-start;
+    background: #8b849c;
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+  }
+
+  .mon-card.empty-slot{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px dashed #bb86fc;
+    background: rgba(187, 134, 252, 0.08);
+    color: #7c3a9e;
+    font-weight: 700;
+    box-shadow: none;
+
+    &:hover{
+      background: rgba(187, 134, 252, 0.15);
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  .no-pokemon{
+    color: #8b849c;
+    font-size: 0.9rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .content-div{
+      animation: none;
+    }
+
+    .spotlight img,
+    .spotlight .info,
+    .mon-card,
+    .hp-fill,
+    .div-grids,
+    .trainer-card{
+      transition: none;
+    }
+  }
+
+  .trainer-grids{
+    .trainer-grid{
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+  }
+
+  .div-grids {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    display: flex;
+
+    &:hover {
+      transform: translateY(-8px);
+
+      .trainer-card {
+        box-shadow: 0 12px 24px rgba(32, 2, 69, 0.3);
+      }
+    }
+  }
+
+  .trainer-card{
+    border-radius: 1rem;
+    border: none;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(32, 2, 69, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    .trainer-image{
+      background: #f0f0f0;
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+ 
+
+      img{
+        width: 72px;
+        height: 72px;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+    }
+
+    .trainer-info{
+      text-align: center;
+      color: #200245;
+      width: 100%;
+
+      h3{
+        margin: 0.25rem 0 0 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #200245;
+      }
+
+      p{
+        margin: 0.2rem 0 0 0;
+        color: #555;
+        font-size: 0.85rem;
+      }
+    }
+  }
+.pokemon-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.5rem;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 0.25rem;
+}
+.pick-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  color: #200245;
+  font-size: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+}
+.pick-tile input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.pick-tile img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+.pick-tile:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+.pick-tile:has(input:checked) {
+  border-color: #9b63d4;
+  background: rgba(187, 134, 252, 0.35);
+}
+.pick-tile:has(input:focus-visible) {
+  outline: 2px solid #200245;
+}

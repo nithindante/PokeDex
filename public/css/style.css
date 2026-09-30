@@ -1,0 +1,201 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter";
+  color: #fff;
+}
+
+.header-div {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  padding: 1.5rem;
+  background-color: #1b263b;
+  .header-left-div {
+    display: flex;
+    a {
+      color: #bb86fc;
+      text-decoration: none;
+    }
+  }
+}
+.header-right-div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  a {
+    color: #bb86fc;
+    text-decoration: none;
+  }
+}
+
+.main-heading,
+.secondary-heading {
+  color: #200245;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.content-div {
+  background: linear-gradient(90deg, #a4baf5, #c8e74d, #f5a2a1);
+  background-size: 300% 300%;
+  animation: gradient 6s alternate infinite;
+  position: absolute;
+  min-height: 100vh;
+  width: 100%;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+.heading-div {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.quick-stats-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-family: "Inter";
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 50%;
+  justify-self: center;
+  span {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+
+.cards-col {
+  padding: 1rem;
+  height: 280px;
+  border-radius: 1rem;
+  border: 1px solid #200245;
+  background-color: #200245;
+}
+.quick-stat-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  color: #bb86fc;
+  font-size: 1.5rem;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.quick-actions-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 2rem;
+  .quick-actions-buttons-div {
+    display: flex;
+    gap: 1rem;
+  }
+  span {
+    margin-left: -24rem;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  a {
+    text-decoration: none;
+  }
+  .btn-primary {
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: #1b263b;
+    border-color: #1b263b;
+  }
+  .btn-secondary {
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: #200245;
+    border-color: #200245;
+  }
+  .btn-success {
+    font-family: "Inter";
+    border-color: #bb86fc;
+  }
+  .btn-primary:hover {
+    background-color: #1b263b;
+    border-color: #1b263b;
+    opacity: 0.8;
+  }
+  .btn-secondary:hover {
+    background-color: #200245;
+    border-color: #200245;
+    opacity: 0.8;
+  }
+  .btn-success:hover {
+    background-color: #bb86fc;
+    border-color: #bb86fc;
+    opacity: 0.8;
+  }
+  a {
+    color: #fff;
+  }
+}
+.create-form{
+  width: 50%;
+  padding:1rem;
+  border-radius: 1rem;
+  border: 5px solid #200245;
+}
+
+.form-div{
+  display: flex;
+  justify-content: center;
+}
+
+.form-label{
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.mb-3{
+  display: grid;
+  grid-template-columns: 0.35fr 0.65fr;
+}
+.submit{
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: #1b263b;
+    border-color: #1b263b;
+}
+.error-card {
+  width: 50%;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 5px solid #200245;
+  background-color: #200245;
+  color: #bb86fc;
+  font-size: 1.25rem;
+  ul {
+    padding-left: 1.5rem;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
