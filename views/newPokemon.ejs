@@ -34,7 +34,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="pokemonType" class="form-label">Pokemon Type</label>
-                        <select class="form-select" id="pokemonType" name="pokemonType">
+                        <select class="form-select" id="pokemonType" name="pokemonTypes[]" multiple>
                             <% types.forEach((p)=> { %>
                                 <option value="<%= p.type_name %>">
                                     <%= p.type_name %>
