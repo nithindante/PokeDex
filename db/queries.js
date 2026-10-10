@@ -28,6 +28,7 @@ async function insertPokemon(pokemon) {
     "INSERT INTO pokemon VALUES (DEFAULT,$1,$2) RETURNING id;",
     [pokemon.pokemonName, pokemon.pokemonUrl],
   );
+  console.log(pokemonAdded.rows)
   await pool.query("INSERT INTO pokmon_types VALUES (DEFAULT,$1,$2) ", [
     pokemonAdded.rows[0].id,
     relevantPokemonType.id,
