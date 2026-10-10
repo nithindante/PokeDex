@@ -6,8 +6,5 @@ router.get('/',async (req,res)=>{
     await reDirectToNewPokemon(req,res)
 })    
 
-router.post('/',async (req,res) => {
-    console.log(req.body,"pokemon")
-    createPokemon
-})
+router.post('/',createPokemon)
 module.exports = router;  

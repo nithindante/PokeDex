@@ -16,17 +16,6 @@ const validatePokemon = [
     .withMessage(
       "Pokemon name can only contain letters, spaces, hyphens, apostrophes and periods",
     ),
-  body("pokemonType")
-    .trim()
-    .notEmpty()
-    .withMessage("Pokemon type is required")
-    .bail()
-    .custom(async (type) => {
-      const types = await db.getTypes();
-      if (!types.some((t) => t.type_name === type)) {
-        throw new Error("Selected Pokemon type does not exist");
-      }
-    }),
 ];
 
 const validateTrainer = [
