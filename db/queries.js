@@ -20,19 +20,30 @@ async function insertUsername(username) {
 }
 
 async function insertPokemon(pokemon) {
-  const { rows } = await pool.query("SELECT * FROM types");
-  const relevantPokemonType = rows.find(
-    (type) => type.type_name === pokemon.pokemonType,
-  );
-  const pokemonAdded = await pool.query(
+  const addPokemonDefault = async () => {
+     const pokemonAdded = await pool.query(
     "INSERT INTO pokemon VALUES (DEFAULT,$1,$2) RETURNING id;",
     [pokemon.pokemonName, pokemon.pokemonUrl],
   );
-  console.log(pokemonAdded.rows[0].id)
-  await pool.query("INSERT INTO pokmon_types VALUES (DEFAULT,$1,$2) ", [
-    pokemonAdded.rows[0].id,
-    relevantPokemonType.id,
+  console.log(pokemonAdded)
+  return pokemonAdded;
+  }
+
+  const pokemonAddedId = await Promise.all([addPokemonDefault()])
+  const pokemonAddedArr  = []
+  pokemonAddedId.map((p)=>pokemonAddedArr.push(p.rows[0].id))
+
+  const typePokemonAdded = await Promise.all(
+    { rows } = await pool.query("SELECT * FROM types"),
+     relevantPokemonType = rows.find(
+    (type) => type.type_name === pokemon.pokemonType)
+  )
+  await Promise.all(typePokemonAdded.map(async (typeID) => {
+    await pool.query("INSERT INTO pokmon_types VALUES (DEFAULT,$1,$2) ", [
+    pokemonAddedId[0],
+    typeID.rows[0].id,
   ]);
+  }))
 }
 
 async function findPokemonById(pokemonId) {
