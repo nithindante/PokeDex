@@ -63,6 +63,77 @@ ON CONFLICT (type_name) DO NOTHING;
   (id) ON DELETE CASCADE,
   pokemon_id INTEGER REFERENCES pokemon(id) ON DELETE CASCADE
 );
+
+INSERT INTO pokemon (pokemon_name, imageurl, levels, hp, status_pokemon)
+SELECT v.pokemon_name, v.imageurl, v.levels, v.hp, v.status_pokemon
+FROM (VALUES
+  ('Bulbasaur',  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',   16, 82, NULL),
+  ('Charmander', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png',   14, 75, NULL),
+  ('Squirtle',   'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png',   15, 90, 'Traded away'),
+  ('Pikachu',    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',  20, 95, NULL),
+  ('Jigglypuff', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png',  12, 70, NULL),
+  ('Meowth',     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png',  13, 65, NULL),
+  ('Abra',       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png',  11, 55, NULL),
+  ('Machop',     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png',  17, 88, NULL),
+  ('Gastly',     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png',  14, 60, NULL),
+  ('Eevee',      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png', 18, 80, NULL)
+) AS v(pokemon_name, imageurl, levels, hp, status_pokemon)
+WHERE NOT EXISTS (SELECT 1 FROM pokemon p WHERE p.pokemon_name = v.pokemon_name);
+
+INSERT INTO trainers (trainer_name, imageurl)
+SELECT v.trainer_name, v.imageurl
+FROM (VALUES
+  ('Ash Ketchum', 'https://api.dicebear.com/9.x/adventurer/svg?seed=Ash%20Ketchum'),
+  ('Misty',       'https://api.dicebear.com/9.x/adventurer/svg?seed=Misty'),
+  ('Brock',       'https://api.dicebear.com/9.x/adventurer/svg?seed=Brock'),
+  ('Gary Oak',    'https://api.dicebear.com/9.x/adventurer/svg?seed=Gary%20Oak')
+) AS v(trainer_name, imageurl)
+WHERE NOT EXISTS (SELECT 1 FROM trainers t WHERE t.trainer_name = v.trainer_name);
+
+INSERT INTO pokmon_types (pokemon_id, types_id)
+SELECT p.id, t.id
+FROM (VALUES
+  ('Bulbasaur',  'Grass'),
+  ('Bulbasaur',  'Poison'),
+  ('Charmander', 'Fire'),
+  ('Squirtle',   'Water'),
+  ('Pikachu',    'Electric'),
+  ('Jigglypuff', 'Normal'),
+  ('Jigglypuff', 'Fairy'),
+  ('Meowth',     'Normal'),
+  ('Abra',       'Psychic'),
+  ('Machop',     'Fighting'),
+  ('Gastly',     'Ghost'),
+  ('Gastly',     'Poison'),
+  ('Eevee',      'Normal')
+) AS v(pokemon_name, type_name)
+JOIN pokemon p ON p.pokemon_name = v.pokemon_name
+JOIN types t ON t.type_name = v.type_name
+WHERE NOT EXISTS (
+  SELECT 1 FROM pokmon_types pt WHERE pt.pokemon_id = p.id AND pt.types_id = t.id
+);
+
+INSERT INTO trainers_pokemon (trainer_id, pokemon_id)
+SELECT tr.id, p.id
+FROM (VALUES
+  ('Ash Ketchum', 'Bulbasaur'),
+  ('Ash Ketchum', 'Charmander'),
+  ('Ash Ketchum', 'Squirtle'),
+  ('Misty',       'Pikachu'),
+  ('Misty',       'Jigglypuff'),
+  ('Misty',       'Meowth'),
+  ('Brock',       'Abra'),
+  ('Brock',       'Machop'),
+  ('Brock',       'Gastly'),
+  ('Gary Oak',    'Eevee'),
+  ('Gary Oak',    'Bulbasaur'),
+  ('Gary Oak',    'Charmander')
+) AS v(trainer_name, pokemon_name)
+JOIN trainers tr ON tr.trainer_name = v.trainer_name
+JOIN pokemon p ON p.pokemon_name = v.pokemon_name
+WHERE NOT EXISTS (
+  SELECT 1 FROM trainers_pokemon tp WHERE tp.trainer_id = tr.id AND tp.pokemon_id = p.id
+);
 `;
 
 async function main() {
